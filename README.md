@@ -109,6 +109,7 @@ Un « protocol » différent de `up` indique la plupart du temps que l’interfa
 ---
 
 **Réponse :**  
+Pas de problèmes rencontrés. L'état des interfaces est cohérent avec le schéma présenté.
 
 ---
 
@@ -147,6 +148,7 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 
 **Réponse :**  
 
+Tous les pings sont passés sans problèmes.
 ---
 
 - Activation de « debug » et analyse des messages ping.
