@@ -453,5 +453,7 @@ L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de h
 ---
 
 **Réponse :**  
+L'intégrité est gérée également par l'algorithme de hashage SHA HMAC. 
+Les parties du paquet protégées en intégrité sont aussi :  l'entête ESP, l'entête IP originale, les données et le trailer ESP.
 
 ---
