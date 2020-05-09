@@ -172,7 +172,8 @@ Pour déclencher et pratiquer les captures vous allez « pinger » votre routeur
 
 **Screenshots :**  
 ![](images/R2WiresharkCapture.PNG)
-![](images/R1Messages.PNG)
+
+![](images/R1Message.PNG)
 
 A noter qu'on constate que la procédure marche bien. Cependant nous n'avons pas pu utiliser le filtre de capture, car essayer de l'utiliser entraîne le crash de wireshark.
 
