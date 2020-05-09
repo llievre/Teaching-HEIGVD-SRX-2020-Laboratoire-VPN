@@ -427,7 +427,7 @@ Avec une capture d'ecran mode tunnel.
 
 Nous sommes ici en mode tunnel en utilisant le protocole ESP. 
 Donc les parties du paquet qui sont chiffrées sont: l'entête IP originale, les données et le trailer ESP.
-L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symetrique.
+L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symetrique. (en particulier aes 192 bits).
 
 ---
 
@@ -437,6 +437,13 @@ L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES
 ---
 
 **Réponse :**  
+
+Encore une fois, pour déterminer quelles sont les parties du paquet qui sont authentifiées il est important de précider qu'on se trouve bien en mode tunnel et qu'on utilise le protocole ESP.
+Donc les parties du paquets qui seront authentifiées sont : l'entête ESP, l'entête IP originale, les données et le trailer ESP.
+L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de hashage SHA HMAC (HMAC: hash-based message authentication code, HMAC etant un algorithme pouvant etre utilisé avec sha, md5 etc.. ici on a choisit sha).
+
+
+
 
 ---
 
