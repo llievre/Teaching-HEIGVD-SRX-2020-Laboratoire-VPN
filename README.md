@@ -468,8 +468,17 @@ Dans les deux cas on remarque que la commande show crypto ipsec transform-set de
 **Réponse :**  
 
 Nous sommes ici en mode tunnel en utilisant le protocole ESP. 
-Donc les parties du paquet qui sont chiffrées sont: l'entête IP originale, les données et le trailer ESP.
+Donc les parties du paquet qui sont chiffrées sont: l'entête IP originale, les données et le trailer ESP (cf cours)
 L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symetrique. (en particulier aes 192 bits).
+ 
+Capture d'ecran du résultat de la commande `show crypto map` pour le routeur R2
+
+![](images/R2show2)
+
+On voit bien en argument du set STRONG, esp-192-aes l'algorithme utilisé
+Même remarque pour le routeur R1
+
+
 
 ---
 
@@ -481,8 +490,17 @@ L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES
 **Réponse :**  
 
 Encore une fois, pour déterminer quelles sont les parties du paquet qui sont authentifiées il est important de précider qu'on se trouve bien en mode tunnel et qu'on utilise le protocole ESP.
-Donc les parties du paquets qui seront authentifiées sont : l'entête ESP, l'entête IP originale, les données et le trailer ESP.
-L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de hashage SHA HMAC (HMAC: hash-based message authentication code, HMAC etant un algorithme pouvant etre utilisé avec sha, md5 etc.. ici on a choisit sha).
+Donc les parties du paquets qui seront authentifiées sont : l'entête ESP, l'entête IP originale, les données et le trailer ESP (cf cours).
+L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de hashage SHA HMAC (HMAC: hash-based message authentication code, HMAC etant un algorithme pouvant etre utilisé avec sha, md5 etc.. ici on a choisit sha-1 en particulier).
+
+ 
+Capture d'ecran du résultat de la commande `show crypto map` pour le routeur R2
+
+![](images/R2show2)
+
+On voit bien en argument du set STRONG, esp-sha-mac l'algorithme utilisé
+Même remarque pour le routeur R1
+
 
 
 
@@ -496,6 +514,6 @@ L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de h
 
 **Réponse :**  
 L'intégrité est gérée également par l'algorithme de hashage SHA HMAC. 
-Les parties du paquet protégées en intégrité sont aussi :  l'entête ESP, l'entête IP originale, les données et le trailer ESP.
+Les parties du paquet protégées en intégrité sont aussi :  l'entête ESP, l'entête IP originale, les données et le trailer ESP. On peut se réferer à la capture d'écran de la question précédente
 
 ---
