@@ -397,6 +397,8 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
+Avec Wireshark, quand on regarde le type de protocoles utilisés par les paquets, on voit IKE (nommé ISAKAMP) et ESP.
+
 ---
 
 
@@ -405,6 +407,8 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 ---
 
 **Réponse :**  
+
+Avec une capture d'ecran mode tunnel.
 
 ---
 
