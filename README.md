@@ -368,6 +368,12 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
+![](images/VPCPing.PNG)
+
+![](images/R1debug.PNG)
+
+![](images/IsakampWireshark.PNG)
+
 
 ---
 
