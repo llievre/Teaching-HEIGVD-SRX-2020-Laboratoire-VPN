@@ -395,8 +395,8 @@ On peut faire plusieurs remarques quant à cette capture.
 Nous avons les 6 premiers paquets envoyés depuis l'envoi de notre ping request depuis le VPC qui utilisent le protocole ISAKMP(IKE) et qui ont pour description Identity Protection (Main Mode)
 Ces 6 premiers paquets correspondent à la phase 1 du protocole IKE dont l'objectif est d'établir un canal sécurisé entre les deux routeurs 193.200.200.1 et 193.100.100.1.
 Les 3 paquets suivant utilisent toujours le protocole IKE et ont cette fois pour description Quick mode.
-Ces 3 paquets correspondent à la phase 2 du protocole IKE dont l'objectif est d'effectuer une négociation des paramètres pour les SA (quelles politiques, algorithmes utiliser...) pour établir le canal de transmission des données IPSec.
-Enfin les 8 paquets restants utilisent le protocole ESP. Ici les données (c'est à dire les 4 echo request + les 4 echos reply) sont protégées, encapsulées gâce au protocole ESP et transite par le tunnel IPSec établi plus tôt.
+Ces 3 paquets correspondent à la phase 2 du protocole IKE dont l'objectif est d'effectuer une négociation des paramètres pour les SA (quelles politiques, algorithmes utiliser...) pour établir le canal de transmission des données IPsec.
+Enfin les 8 paquets restants utilisent le protocole ESP. Ici les données (c'est à dire les 4 echo request + les 4 echos reply) sont protégées, encapsulées gâce au protocole ESP et transite par le tunnel IPsec établi plus tôt.
 
 
 ---
@@ -406,6 +406,16 @@ Enfin les 8 paquets restants utilisent le protocole ESP. Ici les données (c'est
 ---
 
 **Réponse :**  
+
+Dans le cas du timer IKE : 
+Le timer utilisé crypto isakmp policy lifetime spécifie la durée de vie d'une SA soit la durée pendant laquelle une SA utilise une clé de chiffrement avant de devoir la remplacer.  Une durée de vie plus courte d'une SA garantit en général des négociations plus sécurisée.
+On peut aussi voir plus simplement le lifetime comme ***la durée définie entre chaque renégociation des parametres pour les SA*** ou la durée avant de devoir relancer la phase 1 de IKE une nouvelle fois
+Ce lifetime doit être plus grand que celui de IPsec. 
+
+
+Dans le cas du timer IPsec : On peut aussi voir plus simplement le lifetime comme la durée avant de devoir relancer la phase 2 de IKE une nouvelle fois.
+
+
 
 ---
 
@@ -421,7 +431,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 **Réponse :**  
 
-Avec Wireshark, quand on regarde le type de protocoles utilisés par les paquets, on voit IKE (nommé ISAKAMP) et ESP.
+Avec Wireshark, quand on regarde le type de protocoles utilisés par les paquets, on voit IKE (ISAKMP) et ESP.
 
 ![](images/IsakampWireshark.PNG)
 
@@ -434,11 +444,19 @@ Avec Wireshark, quand on regarde le type de protocoles utilisés par les paquets
 
 **Réponse :**  
 
-Avec une capture d'ecran mode tunnel.
+Capture d'ecran du résultat des différentes commandes `show` pour le routeur R1
+
 ![](images/R1show1.PNG)
 ![](images/R1show2.PNG)
+
+
+Capture d'ecran du résultat des différentes commandes `show` pour le routeur R2
+
 ![](images/R2show1.PNG)
 ![](images/R2show2.PNG)
+
+
+Dans les deux cas on remarque que la commande show crypto ipsec transform-set decrit le set STRONG comme utilisant le mode tunnel et lorsque l'on fait un show crypto map on voit que le transform set associé est de type STRONG. Ce qui montre que notre VPN marche en mode tunnel
 
 ---
 
