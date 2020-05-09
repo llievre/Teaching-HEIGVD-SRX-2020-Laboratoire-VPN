@@ -248,6 +248,8 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 **Réponse :**  
 
+![](images/R1Policy.PNG)
+
 ---
 
 
@@ -256,6 +258,8 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
+
+![](images/R1Key.PNG)
 
 ---
 
