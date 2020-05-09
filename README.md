@@ -281,7 +281,7 @@ Capture d'écran du résultat de `show crypto isakmp key` pour R2
 ![](images/R2Key.PNG)
 
 On remarque dans ces captures d'écran qu'il est indiqué les adresses respectives des deux hôtes. Ce qui est normal.
-Ce qu'il faut voir ici ce sont les preshared key qui sont identiques. Puisque le mode d'authentification choisi repose sur la méthode preshared key, il faut que les deux hôtes disposent de clés identiques qu'ils pourront s'échanger lors de la procedure d'authentification IKE (dérivation de la clée partagée à l'aide de clés publiques Diffie Hellmann échangée).
+Ce qu'il faut voir ici ce sont les preshared key qui sont identiques. Puisque le mode d'authentification choisi repose sur la méthode preshared key, il faut que les deux hôtes disposent d'un clé partagée identique qu'ils pourront utiliser lors de la procédure d'authentification IKE (dérivation de la clée partagée à l'aide de clés publiques Diffie Hellmann échangée).
 
 ---
 
