@@ -171,11 +171,16 @@ Pour déclencher et pratiquer les captures vous allez « pinger » votre routeur
 ---
 
 **Screenshots :**  
-![Capture Wireshark prise à la sortie du routeur R2 vers Internet](images/R2WiresharkCapture.PNG)
 
-![Messages de R1 avec `debug ip icmp`](images/R1Message.PNG)
+Voici une capture Wireshark prise à la sortie du routeur R2 vers Internet
+![](images/R2WiresharkCapture.PNG)
+On voit bien ici sur l'image les paquets icmp echo-request envoyés depuis l'ip 172.17.1.100 (adresse du VPC) vers 193.100.100.1 (R1) et les paquets icmp echo-reply envoyés depuis R1 vers VPC
 
-A noter qu'on constate que la procédure marche bien. Cependant nous n'avons pas pu utiliser le filtre de capture, car essayer de l'utiliser entraîne le crash de wireshark.
+Voici les messages de R1 avec `debug ip icmp`
+![](images/R1Message.PNG)
+Ces messages font état des messages echo reply envoyés par R1 à l'adresse ip 172.17.1.100.
+
+On constate que la procédure marche bien. Nous n'avons pas pu utiliser le filtre de capture, car essayer de l'utiliser entraîne le crash de wireshark.
 
 ---
 
