@@ -252,8 +252,9 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 ![](images/R2Policy.PNG)
 
-(EXPLICATION A VENIR)
+Dans le cadre d'une communication LAN LAN, IKE (ici ISAKMP) permet de négocier quelle politique de sécurité sera utilisée entre les deux hôtes qui souhaitent etablir une communication. On remarque que R1 ne propose qu'une seule politique tandis que R2 en propose 2. Les politiques proposées par R2 ont deux priorités différentes. La première a une priorité de 10 et a donc une priorité plus élevée que celle à priorité 20. Donc R2 prefererait utiliser la premiere politique.
 
+Cependant ici, on remarque que les caracteristiques de la politique proposée par R1 est la même que la politique de priorité plus faible proposée par R2. ***C'est donc cette politique commune qui sera utilisée*** lors d'une communication entre les deux hôtes
 
 ---
 
