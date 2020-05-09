@@ -426,8 +426,8 @@ Avec une capture d'ecran mode tunnel.
 **Réponse :**  
 
 Nous sommes ici en mode tunnel en utilisant le protocole ESP. 
-Donc le paquet entier (entête IP originale + données) est chiffré.
-L'algorithme cryptographique correpondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symetrique.
+Donc les parties du paquet qui sont chiffrées sont: l'entête IP originale, les données et le trailer ESP.
+L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symetrique.
 
 ---
 
