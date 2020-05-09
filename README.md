@@ -473,7 +473,7 @@ L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES
  
 Capture d'ecran du résultat de la commande `show crypto map` pour le routeur R2
 
-![](images/R2show2)
+![](images/InkedR2show2_LI.jpg)
 
 On voit bien en argument du set STRONG, esp-192-aes l'algorithme utilisé
 Même remarque pour le routeur R1
@@ -496,7 +496,7 @@ L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de h
  
 Capture d'ecran du résultat de la commande `show crypto map` pour le routeur R2
 
-![](images/R2show2)
+![](images/InkedR2show2_LI2.jpg)
 
 On voit bien en argument du set STRONG, esp-sha-mac l'algorithme utilisé
 Même remarque pour le routeur R1
