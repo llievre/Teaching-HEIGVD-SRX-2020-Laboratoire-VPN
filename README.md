@@ -375,11 +375,28 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 ---
 
 **Réponse :**  
+Capture d'écran du ping envoyé depuis le VPC vers le routeur R1(172.16.1.1)
+
 ![](images/VPCPing.PNG)
+
+On constate que le ping est passé avec succès 4 fois.
+
+Capture d'écran des messages `debug ip icmp`
 
 ![](images/R1debug.PNG)
 
+On constate que R1 a envoyé 4 echo reply au VPC
+
+Capture Wireshark prise depuis la sortie du routeur R2 vers internet
+
 ![](images/IsakampWireshark.PNG)
+
+On peut faire plusieurs remarques quant à cette capture.
+Nous avons les 6 premiers paquets envoyés depuis l'envoi de notre ping request depuis le VPC qui utilisent le protocole ISAKMP(IKE) et qui ont pour description Identity Protection (Main Mode)
+Ces 6 premiers paquets correspondent à la phase 1 du protocole IKE dont l'objectif est d'établir un canal sécurisé entre les deux routeurs 193.200.200.1 et 193.100.100.1.
+Les 3 paquets suivant utilisent toujours le protocole IKE et ont cette fois pour description Quick mode.
+Ces 3 paquets correspondent à la phase 2 du protocole IKE dont l'objectif est d'effectuer une négociation des paramètres pour les SA (quelles politiques, algorithmes utiliser...) pour établir le canal de transmission des données IPSec.
+Enfin les 8 paquets restants utilisent le protocole ESP. Ici les données (c'est à dire les 4 echo request + les 4 echos reply) sont protégées, encapsulées gâce au protocole ESP et transite par le tunnel IPSec établi plus tôt.
 
 
 ---
