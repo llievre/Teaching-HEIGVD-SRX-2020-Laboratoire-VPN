@@ -252,17 +252,17 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 ---
 
 **Réponse :**  
-
+Capture d'écran du résultat de `show crypto isakmp policy` pour R1
 ![](images/R1Policy.PNG)
 
+Capture d'écran du résultat de `show crypto isakmp policy` pour R2
 ![](images/R2Policy.PNG)
 
 Dans le cadre d'une communication LAN LAN, IKE (ici ISAKMP) permet de négocier quelle politique de sécurité sera utilisée entre les deux hôtes qui souhaitent etablir une communication. On remarque que R1 ne propose qu'une seule politique tandis que R2 en propose 2. Les politiques proposées par R2 ont deux priorités différentes. La première a une priorité de 10 et a donc une priorité plus élevée que celle à priorité 20. Donc R2 prefererait utiliser la premiere politique.
 
-Cependant ici, on remarque que les caracteristiques de la politique proposée par R1 est la même que la politique de priorité plus faible proposée par R2. ***C'est donc cette politique commune qui sera utilisée*** lors d'une communication entre les deux hôtes.
+Cependant ici, on remarque que les caracteristiques de la seule politique proposée par R1 est la même que la politique de priorité plus faible proposée par R2. ***C'est donc cette politique commune qui sera utilisée*** lors d'une communication entre les deux hôtes.
 
-Nous pouvons détailler ici les caractéristiques de la politique choisie par les deux hôtes :
-(Détails a venir)
+Cette politique correspond à celle décrite dans le tableau plus haut dans l'énoncé.
 
 
 ---
@@ -274,12 +274,14 @@ Nous pouvons détailler ici les caractéristiques de la politique choisie par le
 
 **Réponse :**  
 
+Capture d'écran du résultat de `show crypto isakmp key` pour R1
 ![](images/R1Key.PNG)
 
+Capture d'écran du résultat de `show crypto isakmp key` pour R2
 ![](images/R2Key.PNG)
 
 On remarque dans ces captures d'écran qu'il est indiqué les adresses respectives des deux hôtes. Ce qui est normal.
-Ce qu'il faut voir ici ce sont les preshared key qui sont identiques. Puisque le mode d'authentification choisi repose sur la methode preshared key, il faut que les deux hôtes disposent de clés identiques qu'ils pourront s'echanger lors de la procedure d'authentification (dérivation de la clée partagée à l'aide de clés publiques Diffie Hellmann échangée).
+Ce qu'il faut voir ici ce sont les preshared key qui sont identiques. Puisque le mode d'authentification choisi repose sur la méthode preshared key, il faut que les deux hôtes disposent de clés identiques qu'ils pourront s'échanger lors de la procedure d'authentification IKE (dérivation de la clée partagée à l'aide de clés publiques Diffie Hellmann échangée).
 
 ---
 
