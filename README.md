@@ -30,8 +30,8 @@ Dans ce travail de laboratoire, vous allez configurer des routeurs Cisco émulé
 -	Capture Sniffer avec filtres précis sur la communication à épier
 -	Activation du mode « debug » pour certaines fonctions du routeur
 -	Observation des protocoles IPSec
- 
- 
+
+
 ## Matériel
 
 La manière la plus simple de faire ce laboratoire est dans les machines des salles de labo. Le logiciel d'émulation c'est eve-ng. Vous trouverez un [guide très condensé](files/Fonctionnement_EVE-NG.pdf) pour l'utilisation de eve-ng ici.
@@ -146,10 +146,7 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 
 ---
 
-**Réponse :**  
-
-Tous les pings sont passés sans problèmes.
----
+**Réponse :**  Tous les pings sont passés sans problèmes.
 
 - Activation de « debug » et analyse des messages ping.
 
@@ -258,12 +255,11 @@ Capture d'écran du résultat de `show crypto isakmp policy` pour R1
 Capture d'écran du résultat de `show crypto isakmp policy` pour R2
 ![](images/R2Policy.PNG)
 
-Dans le cadre d'une communication LAN LAN, IKE (ici ISAKMP) permet de négocier quelle politique de sécurité sera utilisée entre les deux hôtes qui souhaitent etablir une communication. On remarque que R1 ne propose qu'une seule politique tandis que R2 en propose 2. Les politiques proposées par R2 ont deux priorités différentes. La première a une priorité de 10 et a donc une priorité plus élevée que celle à priorité 20. Donc R2 prefererait utiliser la premiere politique.
+Dans le cadre d'une communication LAN LAN, IKE (ici ISAKMP) permet de négocier quelle politique de sécurité sera utilisée entre les deux hôtes qui souhaitent établir une communication. On remarque que R1 ne propose qu'une seule politique tandis que R2 en propose 2. Les politiques proposées par R2 ont deux priorités différentes. La première a une priorité de 10 et a donc une priorité plus élevée que celle à priorité 20. Donc R2 préférerait utiliser la première politique.
 
-Cependant ici, on remarque que les caracteristiques de la seule politique proposée par R1 est la même que la politique de priorité plus faible proposée par R2. ***C'est donc cette politique commune qui sera utilisée*** lors d'une communication entre les deux hôtes.
+Cependant ici, on remarque que les caractéristiques de la seule politique proposée par R1 est la même que la politique de priorité plus faible proposée par R2. ***C'est donc cette politique commune qui sera utilisée*** lors d'une communication entre les deux hôtes.
 
 Cette politique correspond à celle décrite dans le tableau plus haut dans l'énoncé.
-
 
 ---
 
@@ -281,7 +277,7 @@ Capture d'écran du résultat de `show crypto isakmp key` pour R2
 ![](images/R2Key.PNG)
 
 On remarque dans ces captures d'écran qu'il est indiqué les adresses respectives des deux hôtes. Ce qui est normal.
-Ce qu'il faut voir ici ce sont les preshared key qui sont identiques. Puisque le mode d'authentification choisi repose sur la méthode preshared key, il faut que les deux hôtes disposent d'un clé partagée identique qu'ils pourront utiliser lors de la procédure d'authentification IKE (dérivation de la clée partagée à l'aide de clés publiques Diffie Hellmann échangée).
+Ce qu'il faut voir ici ce sont les preshared key qui sont identiques. Puisque le mode d'authentification choisi repose sur la méthode preshared key, il faut que les deux hôtes disposent d'un clé partagée identique qu'ils pourront utiliser lors de la procédure d'authentification IKE (dérivation de la clé partagée à l'aide de clés publiques Diffie Hellmann échangée).
 
 ---
 
@@ -398,7 +394,6 @@ Les 3 paquets suivant utilisent toujours le protocole IKE et ont cette fois pour
 Ces 3 paquets correspondent à la phase 2 du protocole IKE dont l'objectif est d'effectuer une négociation des paramètres pour les SA (quelles politiques, algorithmes utiliser...) pour établir le canal de transmission des données IPsec.
 Enfin les 8 paquets restants utilisent le protocole ESP. Ici les données (c'est à dire les 4 echo request + les 4 echos reply) sont protégées, encapsulées gâce au protocole ESP et transite par le tunnel IPsec établi plus tôt.
 
-
 ---
 
 **Question 7: Reportez dans votre rapport une petite explication concernant les différents « timers » utilisés par IKE et IPsec dans cet exercice (recherche Web). :**
@@ -444,13 +439,13 @@ Avec Wireshark, quand on regarde le type de protocoles utilisés par les paquets
 
 **Réponse :**  
 
-Capture d'ecran du résultat des différentes commandes `show` pour le routeur R1
+Capture d’écran du résultat des différentes commandes `show` pour le routeur R1
 
 ![](images/R1show1.PNG)
 ![](images/R1show2.PNG)
 
 
-Capture d'ecran du résultat des différentes commandes `show` pour le routeur R2
+Capture d’écran du résultat des différentes commandes `show` pour le routeur R2
 
 ![](images/R2show1.PNG)
 ![](images/R2show2.PNG)
@@ -469,8 +464,8 @@ Dans les deux cas on remarque que la commande show crypto ipsec transform-set de
 
 Nous sommes ici en mode tunnel en utilisant le protocole ESP. 
 Donc les parties du paquet qui sont chiffrées sont: l'entête IP originale, les données et le trailer ESP (cf cours)
-L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symetrique. (en particulier aes 192 bits).
- 
+L'algorithme cryptographique correspondant utilisé par le protocole ESP est AES (Advanced Encryption Standard), un algorithme de chiffrement symétrique. (en particulier aes 192 bits).
+
 Capture d'ecran du résultat de la commande `show crypto map` pour le routeur R2
 
 ![](images/InkedR2show2_LI.jpg)
@@ -489,12 +484,12 @@ Même remarque pour le routeur R1
 
 **Réponse :**  
 
-Encore une fois, pour déterminer quelles sont les parties du paquet qui sont authentifiées il est important de précider qu'on se trouve bien en mode tunnel et qu'on utilise le protocole ESP.
+Encore une fois, pour déterminer quelles sont les parties du paquet qui sont authentifiées il est important de préciser qu'on se trouve bien en mode tunnel et qu'on utilise le protocole ESP.
 Donc les parties du paquets qui seront authentifiées sont : l'entête ESP, l'entête IP originale, les données et le trailer ESP (cf cours).
 L'algorithme cryptographique utilisé par le protocole ESP est l'algorithme de hashage SHA HMAC (HMAC: hash-based message authentication code, HMAC etant un algorithme pouvant etre utilisé avec sha, md5 etc.. ici on a choisit sha-1 en particulier).
 
- 
-Capture d'ecran du résultat de la commande `show crypto map` pour le routeur R2
+
+Capture d’écran du résultat de la commande `show crypto map` pour le routeur R2
 
 ![](images/InkedR2show2_LI2.jpg)
 
@@ -514,6 +509,6 @@ Même remarque pour le routeur R1
 
 **Réponse :**  
 L'intégrité est gérée également par l'algorithme de hashage SHA HMAC. 
-Les parties du paquet protégées en intégrité sont aussi :  l'entête ESP, l'entête IP originale, les données et le trailer ESP. On peut se réferer à la capture d'écran de la question précédente
+Les parties du paquet protégées en intégrité sont aussi :  l'entête ESP, l'entête IP originale, les données et le trailer ESP. On peut se référer à la capture d'écran de la question précédente
 
 ---
